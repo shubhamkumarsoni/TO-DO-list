@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one {
+            text-align: center;
+            background-color: #c2e5ee;
+            border: 100px;
+            font-size: 25px;
+
+
+        }
+
+        #my_task {
+            background-color: rgb(88, 158, 161);
+            border: 10px;
+            margin-left: 50px;
+            margin-right: 50px;
+            font-size: 25px;
+            transform: translate(0px, 0px);
+
+        }
+
+        /* #two {
+
+            background-color: rgb(228, 79, 206);
+            text-align: centre;
+            margin-left: 20px;
+            align-items: center;
+        } */
+
+        #body1 {
+            align-items: centre;
+            margin: 50px auto;
+            padding: 20 px;
+            background-color: #9de7fa;
+            width: 500px;
+            height: 600px;
+        }
+
+        input {
+            background-color: rgb(241, 185, 187);
+            width: 80%;
+            height: 30px;
+        }
+
+        #btn1 {
+            width: 30px;
+            height: 35px;
+        }
+        h1{
+            background-color: rgb(228, 79, 206);
+            text-align: center;
+        }
+
+        #btn2 {
+            width: 30px;
+            height: 35px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="body1">
+        <div>
+            <h1 id="two"> MAKE YOUR TODO LIST</h1>
+            <input type="text" placeholder="Please Enter Your Task "></input>
+            <button id="btn1">+</button>
+            <button id="btn2">-</button>
+            <ol id="my_task">
+        </div>
+
+        <!-- <li>list 1</li>
+            <li>list 2</li>
+            <li>list 3</li>
+            <li>list4</li>
+            <li>list5</li> -->
+        </ol>
+        <script>
+            const my_list = document.querySelector('ol')
+            const my_button = document.getElementById('btn1')
+            const my_delete_button = document.getElementById('btn2')
+            const my_input = document.querySelector('input')
+
+            my_button.addEventListener('click', () => {
+                const txt = my_input.value; //Get the text from input field
+                my_input.value = "" //clear the input field
+                const my_list_element = document.createElement('li') //create the list element
+                const text_node = document.createTextNode(txt) //create a text node 
+                my_list_element.append(text_node); // add the text to the list element
+                my_list.appendChild(my_list_element) //add the list element to the list
+            })
+
+            my_delete_button.addEventListener('click', () => { //add a event listener which deletes "my_list_element" when the button is clicked
+                let my_list = document.querySelector('ol');
+                let my_list_element = document.querySelector('li');
+                my_list.removeChild(my_list_element);
+                my_list.enterKeyHint(my_list_element);
+            })
+
+            document.addEventListener('keydown', (e) => {
+                console.log(e.key);
+                if (e.key === "Enter") {
+                    const txt = my_input.value; //Get the text from input field
+                    my_input.value = "" //clear the input field
+                    const my_list_element = document.createElement('li') //create the list element
+                    const text_node = document.createTextNode(txt) //create a text node 
+                    my_list_element.append(text_node); // add the text to the list element
+                    my_list.appendChild(my_list_element) //add the list element to the list
+                }
+            })
+
+            document.addEventListener('keydown', (e) => {
+                console.log(e.key);
+                if (e.key === "Backspace") {
+                    let my_list = document.querySelector('ol');
+                    let my_list_element = document.querySelector('li');
+                    my_list.removeChild(my_list_element);
+                }
+            })
+        </script>
+    </div>
+</body>
+
+</html>
